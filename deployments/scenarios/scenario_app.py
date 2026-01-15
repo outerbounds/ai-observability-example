@@ -183,18 +183,19 @@ def load_model():
 
         if run is None:
             st.error("No successful WildfireFlow run found. Please run the flow first.")
-            return None, None, None, None
+            return None, None, None, None, None
 
         train_step = run["train"].task
         model = train_step.data.model
         encoders = train_step.data.encoders
         feature_cols = train_step.data.feature_cols
         auc_score = train_step.data.auc_score
+        run_id = run.id
 
-        return model, encoders, feature_cols, auc_score
+        return model, encoders, feature_cols, auc_score, run_id
     except Exception as e:
         st.error(f"Error loading model: {e}")
-        return None, None, None, None
+        return None, None, None, None, None
 
 
 def encode_feature(value, encoder, feature_name):
@@ -264,11 +265,15 @@ def main():
     """)
 
     # Load model
-    model, encoders, feature_cols, auc_score = load_model()
+    model, encoders, feature_cols, auc_score, run_id = load_model()
 
     if model is None:
         st.stop()
 
+    # Display Run ID prominently
+    st.info(f"**Model Run ID:** `{run_id}`")
+
+    st.sidebar.markdown(f"**Model Run ID:** `{run_id}`")
     st.sidebar.markdown(f"**Model AUC Score:** {auc_score:.3f}")
 
     # Layout: map on left, features on right
