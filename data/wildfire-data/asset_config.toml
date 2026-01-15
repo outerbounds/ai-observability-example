@@ -1,0 +1,5 @@
+name = "Wildfire data"
+id = 'wildfire_data
+kind = 'static-data'
+blobs = []
+description = "Wildfire dataset"

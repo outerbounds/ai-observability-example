@@ -1,0 +1,10 @@
+name: scenarios
+port: 8000
+description: Test the Wildfire Destruction Model
+
+replicas:
+  min: 1
+  max: 1
+
+commands:
+  - streamlit run scenario_app.py --server.port 8000

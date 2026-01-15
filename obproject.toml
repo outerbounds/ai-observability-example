@@ -1,0 +1,7 @@
+
+platform = 'dev-yellow.outerbounds.xyz'
+project = 'ai_observability_example'
+title = 'AI Observability Example'
+
+[dev-assets]
+branch = 'dev'
