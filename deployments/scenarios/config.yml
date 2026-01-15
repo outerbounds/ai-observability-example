@@ -8,3 +8,6 @@ replicas:
 
 commands:
   - streamlit run scenario_app.py --server.port 8000
+
+dependencies:
+  from_requirements_file: requirements.txt
