@@ -1,8 +1,9 @@
 from metaflow import FlowSpec, step, IncludeFile, pypi, card
 import io
 
-from obproject import ProjectFlow
+from obproject import ProjectFlow, project_trigger
 
+@project_trigger(event='wildfire_event')
 class WildfireFlow(ProjectFlow):
 
     wfdata = IncludeFile(
