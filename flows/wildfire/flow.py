@@ -3,7 +3,7 @@ import io
 
 from obproject import ProjectFlow, project_trigger
 
-@project_trigger(name='wildfire_event')
+@project_trigger(event='wildfire_event')
 class WildfireFlow(ProjectFlow):
 
     wfdata = IncludeFile(
